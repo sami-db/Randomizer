@@ -1,0 +1,120 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eeeeee;
+    color: #222831;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #222831; /* Couleur de texte foncé typique de Google */
+}
+
+#menu {
+    margin-top: 30px;
+}
+
+button {
+    background-color: #0092ca; /* Bleu futuriste */
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s, transform 0.2s, opacity 0.2s;
+    box-shadow: 0px 4px 10px rgb(57, 62, 70, 0.3);
+}
+
+button:hover {
+    background-color: #0084b8; /* Bleu légèrement plus foncé */
+    box-shadow: 0px 8px 12px rgb(57, 62, 70, 0.3);
+}
+button img {
+    width: 30px; /* Taille d'image réduite */
+    height: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+
+.jeu {
+    margin-top: 40px;
+    border: 1px solid #37474f; /* Bordure légère */
+    padding: 20px;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ##############   Roue de la chance    ##############*/
+
+#roueContainer {
+    position: relative;
+    width: 500px; /* Doit correspondre à la largeur du canvas */
+    margin: auto;
+}
+
+#flècheRoue {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    font-size: 30px;
+    color: red;
+}
+
+/* ##############   Pile ou face    ##############*/
+#pieceContainer {
+    perspective: 1000px;
+}
+
+#piece {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    border-radius: 50%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.flip {
+    animation: flip 3s forwards;
+}
+
+@keyframes flip {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(3600deg); }
+}
+
+/* ##############   Dé à six faces    ##############*/
+#containerDe {
+    width: 400px;
+    height: 400px;
+    margin: auto;
+}
+
+
+/* Responsive design */
+@media (max-width: 600px) {
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .jeu {
+        width: 100%;
+        box-sizing: border-box; /* Assurez-vous que le padding ne dépasse pas la largeur définie */
+    }
+}
