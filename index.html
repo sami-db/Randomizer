@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeux de Randomisation</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="JS/Libraries/Winwheel.js"></script>
+</head>
+<body>
+
+
+<h1>Bienvenue aux Jeux de Randomisation</h1>
+<div id="menu">
+    <button id="btnRoue">
+        <img src="https://i.ibb.co/FYMsVVk/roue.png" alt="Roue de la Chance">
+        Roue de la Chance
+    </button>
+    <button id="btnPileFace">
+        <img src="https://i.ibb.co/Bng3jYh/pileface.png" alt="Pile ou Face">
+        Pile ou Face
+    </button>
+    <button id="btnDe">
+        <img src="https://i.ibb.co/4tDpVdg/de.png" alt="Dé à six faces">
+        Dé à six faces
+    </button>
+</div>
+
+<div id="jeuRoue" class="jeu" style="display:none;">
+    <div id="roueContainer">
+        <canvas id='canvasRoue' width='500' height='500'></canvas> <!-- Canvas pour la roue -->
+        <textarea id="valeursRoue" placeholder="Entrez les valeurs séparées par une virgule"></textarea>
+        <div id="flècheRoue">&#9650;</div>
+        <button onclick="lancerRoue()">Lancer la Roue</button>
+        <div id="resultatRoue"></div>
+    </div>
+</div>
+
+<div id="jeuPileFace" class="jeu" style="display:none;">
+    <div id="pieceContainer">
+        <img id="piece" src="https://i.ibb.co/MnTMfJ8/face.png" alt="Face">
+    </div>
+    <button onclick="lancerPileFace()">Lancer la Pièce</button>
+    <div id="resultatPileFace"></div>
+</div>
+
+
+<div id="jeuDe" class="jeu" style="display:none;">
+    <div id="containerDe"></div>
+    <div id="resultatDe"></div>
+    <button onclick="lancerDe()">Lancer le Dé</button>
+</div>
+
+
+<script src="JS/menu.js"></script>
+<script src="JS/jeux.js"></script>
+</body>
+</html>

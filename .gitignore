@@ -1,0 +1,7 @@
+# Ignorer les fichiers et répertoires spécifiques à l'IDE IntelliJ IDEA
+.idea/
+.idea/modules.xml
+.idea/php.xml
+.idea/Randomizer.iml
+.idea/vcs.xml
+*.iml
