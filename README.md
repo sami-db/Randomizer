@@ -5,7 +5,7 @@ Le site `Randomizer` est une application web interactive conçue pour fournir de
 ## Caractéristiques Principales
 
 - Génération de nombres aléatoires dans un intervalle d'un dé à six faces.
-- Génération aléatoire entre pile ou face 
+- Génération aléatoire entre pile ou face.
 - Sélection aléatoire grâce a une roue de la fortune dans une liste d'éléments fournie par l'utilisateur.
 - Interface utilisateur intuitive pour toutes les fonctionnalités de randomisation.
 
@@ -22,6 +22,6 @@ Le site `Randomizer` est une application web interactive conçue pour fournir de
 Pour exécuter `Randomizer` localement, clonez simplement le dépôt et ouvrez le fichier `index.html` dans votre navigateur.
 
 ```bash
-git clone https://exemple_de_lien_vers_votre_repo.git Randomizer
+git clone https://github.com/sami-db/Randomizer.git 
 cd Randomizer
 # Ouvrez index.html dans votre navigateur
