@@ -1,20 +1,31 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #eeeeee;
+    background-color: #FFFFFF;
     color: #222831;
-    text-align: center;
     margin: 0;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
-
 h1 {
     color: #222831; /* Couleur de texte foncé typique de Google */
 }
 
-#menu {
-    margin-top: 30px;
+#navbar {
+    display: flex;
+    justify-content: flex-end; /* Aligne le contenu à droite */
+    padding: 20px;
 }
 
+#menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px; /* Espace entre les boutons */
+    flex-grow: 1; /* Permet à ce conteneur de prendre tout l'espace restant */
+    align-items: center; /* Centre les éléments verticalement */
+    margin: 0; /* Enlève la marge par défaut */
+}
 button {
     background-color: #0092ca; /* Bleu futuriste */
     color: #fff;
@@ -105,6 +116,141 @@ button:active {
     margin: auto;
 }
 
+/* Styles pour le bouton */
+.button-1 {
+    background-color: #FFFFFF; /* Couleur de fond blanche */
+    border: 2px solid transparent; /* Bordure solide initiale */
+    border-radius: 10px; /* Coins arrondis */
+    box-sizing: border-box;
+    color: #000000; /* Couleur du texte noire */
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round, sans-serif;
+    font-size: 12px; /* Taille de police réduite */
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 16px; /* Hauteur de ligne réduite */
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 10px; /* Padding réduit */
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transition: all .2s ease-in-out;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 50px; /* Largeur réduite */
+    height: 50px; /* Hauteur réduite */
+    position: relative;
+    z-index: 1;
+}
+
+.button-1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFFFFF; /* Fond blanc pour le bouton */
+    border-radius: 10px; /* Coins arrondis */
+    z-index: 1; /* Place le fond blanc devant l'ombre */
+}
+
+.button-1::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-color: #FFCC66; /* Couleur de la bordure solide */
+    border-radius: 20px; /* Ajustez selon le rayon de bordure désiré */
+    transition: all .2s ease-in-out; /* Ajout de la transition */
+    z-index: 0; /* Place le pseudo-élément derrière le bouton */
+}
+
+.button-1:hover::after {
+    top: -7px;
+    left: -7px;
+    right: -7px;
+    bottom: -7px;
+    background-color: #FFDD77; /* Couleur de la bordure au survol */
+}
+
+.button-1:active::after {
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background-color: #FFAA44; /* Couleur de la bordure lors de l'activation */
+}
+
+.button-1:disabled {
+    cursor: auto;
+    opacity: 0.5; /* Pour rendre le bouton désactivé visuellement identifiable */
+}
+
+.button-1:focus {
+    outline: 5px solid #FFCC66; /* Couleur de la bordure au focus */
+}
+
+/* Styles pour l'icône */
+.button-1 .icon {
+    font-size: 30px; /* Taille de l'icône réduite */
+    display: block;
+    margin: 0 auto;
+}
+
+.button-3 {
+    background-color: #F7F7F7; /* Couleur de fond blanche */
+    border: 2px solid transparent;
+    border-radius: 16px; /* Coins arrondis */
+    box-sizing: border-box;
+    color: #000000; /* Couleur du texte noire */
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round,sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 50px; /* Assurez-vous que le padding est suffisant pour former un carré */
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transition: all .2s ease-in-out;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 250px; /* Largeur fixe pour former un carré */
+    height: 250px; /* Hauteur fixe pour former un carré */
+    position: relative;
+    z-index: 1;
+    box-shadow: 20px 20px 0px #FFCC66; /* Ajout de l'ombre */
+}
+
+.button-3:hover {
+    box-shadow: 10px 10px 0px #FFDD77; /* Réduction de l'ombre au survol */
+}
+
+.button-3:active {
+    box-shadow: 5px 5px 0px #FFAA44; /* Réduction de l'ombre lors de l'activation */
+}
+
+.button-3:disabled {
+    cursor: auto;
+    opacity: 0.5; /* Pour rendre le bouton désactivé visuellement identifiable */
+}
+
+.button-3:focus {
+    outline: 5px solid #FFCC66; /* Couleur de la bordure au focus */
+}
 
 /* Responsive design */
 @media (max-width: 600px) {
@@ -118,3 +264,5 @@ button:active {
         box-sizing: border-box; /* Assurez-vous que le padding ne dépasse pas la largeur définie */
     }
 }
+
+
