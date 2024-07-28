@@ -1,3 +1,36 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    const valeursList = document.getElementById('valeursList');
+    let isDown = false;
+    let startY;
+    let scrollTop;
+
+    valeursList.addEventListener('mousedown', (e) => {
+        isDown = true;
+        valeursList.classList.add('active');
+        startY = e.pageY - valeursList.offsetTop;
+        scrollTop = valeursList.scrollTop;
+    });
+
+    valeursList.addEventListener('mouseleave', () => {
+        isDown = false;
+        valeursList.classList.remove('active');
+    });
+
+    valeursList.addEventListener('mouseup', () => {
+        isDown = false;
+        valeursList.classList.remove('active');
+    });
+
+    valeursList.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const y = e.pageY - valeursList.offsetTop;
+        const walk = (y - startY) * 2; // multiplier l'effet de déplacement
+        valeursList.scrollTop = scrollTop - walk;
+    });
+});
+
+
 // ########################################
 // ##########  ROUE DE LA CHANCE ##########
 // ########################################
@@ -21,23 +54,58 @@ function initialiserRoue(valeurs) {
         }
     });
 }
-function lancerRoue() {
-    if (estRoueEnCours) return; // Empêcher le lancement multiple
-    estRoueEnCours = true;
-    var input = document.getElementById("valeursRoue").value;
-    var valeurs = input.split(',').map(function(item) {
-        return item.trim();
-    }).filter(function(item) {
-        return item !== ""; // Filtre les valeurs vides
+document.addEventListener('DOMContentLoaded', () => {
+    const ajouterValeurButton = document.getElementById('ajouterValeur');
+    const valeursInput = document.getElementById('valeurRoue');
+    const valeursList = document.getElementById('valeursList');
+    const lancerRoueButton = document.getElementById('lancerRoue');
+    let valeurs = [];
+
+    ajouterValeurButton.addEventListener('click', ajouterValeur);
+    valeursInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            ajouterValeur();
+        }
     });
 
-    if (valeurs.length > 0) {
-        initialiserRoue(valeurs);
-        roue.startAnimation();
-    } else {
-        alert("Veuillez entrer au moins une valeur.");
+    function ajouterValeur() {
+        const valeur = valeursInput.value.trim();
+        if (valeur) {
+            valeurs.push(valeur);
+            updateValeursList();
+            valeursInput.value = '';
+        }
     }
-}
+
+    lancerRoueButton.addEventListener('click', lancerRoue);
+
+    function updateValeursList() {
+        valeursList.innerHTML = '';
+        valeurs.forEach((valeur, index) => {
+            const item = document.createElement('div');
+            item.className = 'valeurItem';
+            item.innerHTML = `${valeur} <button onclick="removeValeur(${index})">&times;</button>`;
+            valeursList.appendChild(item);
+        });
+    }
+
+    window.removeValeur = function(index) {
+        valeurs.splice(index, 1);
+        updateValeursList();
+    };
+
+    function lancerRoue() {
+        if (estRoueEnCours) return;
+        estRoueEnCours = true;
+
+        if (valeurs.length > 0) {
+            initialiserRoue(valeurs);
+            roue.startAnimation();
+        } else {
+            alert("Veuillez entrer au moins une valeur.");
+        }
+    }
+});
 
 
 function alertResultat() {

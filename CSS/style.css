@@ -1,20 +1,43 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #FFFFFF;
     color: #222831;
     margin: 0;
+    font-style: normal;
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
+
+img {
+    user-select: none; /* Empêche la sélection de l'image */
+}
+
 h1 {
     color: #222831; /* Couleur de texte foncé typique de Google */
 }
 
 #navbar {
     display: flex;
-    justify-content: flex-end; /* Aligne le contenu à droite */
+    justify-content: space-between; /* Aligne le contenu entre les deux extrémités */
     padding: 20px;
+    background-color: #FFFFFF; /* Ajout d'un fond pour une meilleure visibilité */
+    align-items: center; /* Centrer verticalement les éléments */
+}
+
+.left-navbar h2, .right-navbar h2 {
+    margin: 0;
+}
+
+.right-navbar {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espace entre les éléments */
+}
+
+.right-navbar a {
+    text-decoration: none;
+    color: inherit;
 }
 
 #menu {
@@ -23,9 +46,69 @@ h1 {
     flex-wrap: wrap;
     gap: 50px; /* Espace entre les boutons */
     flex-grow: 1; /* Permet à ce conteneur de prendre tout l'espace restant */
-    align-items: center; /* Centre les éléments verticalement */
     margin: 0; /* Enlève la marge par défaut */
 }
+
+.button-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le contenu horizontalement */
+    text-align: center; /* Centre le texte h2 */
+}
+
+.button-game h2{
+    margin-top: 25px; /* Ajustement de la marge */
+}
+
+.button-3 {
+    width: 150px; /* Ajustez selon vos besoins */
+    height: 150px; /* Ajustez selon vos besoins */
+    overflow: hidden; /* Empêche le contenu de déborder */
+    background-color: #f0f0f0; /* Ajoutez une couleur de fond si nécessaire */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px; /* Coins arrondis */
+    box-shadow: 20px 20px 0px #FFCC66; /* Ajout de l'ombre */
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.button-3 img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* S'assure que l'image s'adapte bien dans le conteneur */
+    pointer-events: none; /* Désactive les événements de souris sur l'image */
+}
+
+.left-navbar img {
+    max-width: 50%;
+    max-height: 50%;
+    object-fit: contain; /* S'assure que l'image s'adapte bien dans le conteneur */
+    pointer-events: none; /* Désactive les événements de souris sur l'image */
+}
+
+.button-1 img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* S'assure que l'image s'adapte bien dans le conteneur */
+    pointer-events: none; /* Désactive les événements de souris sur l'image */
+}
+
+#logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex: 1;
+    margin-top: 20px; /* Assure que le logo est sous la navbar */
+}
+
+#logo img {
+    max-width: 60%; /* Réduit l'image à 60 % de sa taille originale */
+    height: auto;   /* Assure que l'image conserve ses proportions */
+}
+
+
 button {
     background-color: #0092ca; /* Bleu futuriste */
     color: #fff;
@@ -43,6 +126,7 @@ button:hover {
     background-color: #0084b8; /* Bleu légèrement plus foncé */
     box-shadow: 0px 8px 12px rgb(57, 62, 70, 0.3);
 }
+
 button img {
     width: 30px; /* Taille d'image réduite */
     height: auto;
@@ -54,37 +138,142 @@ button:active {
     transform: translateY(2px);
 }
 
-
 .jeu {
-    margin-top: 40px;
-    border: 1px solid #37474f; /* Bordure légère */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
     padding: 20px;
+    border-radius: 20px;
     display: none;
-    background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
-
-
 /* ##############   Roue de la chance    ##############*/
 
 #roueContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Espacement entre les éléments */
     position: relative;
-    width: 500px; /* Doit correspondre à la largeur du canvas */
+    width: 100%; /* Prendre toute la largeur */
+    max-width: 1000px; /* Limite de la largeur */
     margin: auto;
+    padding: 20px; /* Ajouter un peu de padding */
+    border-radius: 20px; /* Bords arrondis */
+}
+
+#roue{
+    justify-content: center;
+    text-align: center;
+}
+
+#canvasRoue {
+    flex: 1; /* La roue prend tout l'espace restant */
+}
+
+#inputsEtListe {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement */
+    margin-left: 20px; /* Espacement à gauche de la roue */
+}
+
+#inputsRoue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Espacement en bas */
+}
+
+#valeurRoue {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #FFCC66;
+    border-radius: 8px;
+    margin-right: 10px;
+    width: 200px; /* Largeur du champ de saisie */
+}
+
+#ajouterValeur {
+    font-size: 16px;
+    background-color: #FFCC66;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#valeursListContainer {
+    max-height: 500px; /* Ajustez cette valeur selon vos besoins */
+    overflow-y: auto; /* Permet le défilement vertical */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#valeursList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alignement à gauche */
+    width: 100%; /* Prendre toute la largeur */
+    margin-top: 20px; /* Espacement en haut */
+    overflow-y: auto; /* Permet le défilement vertical */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+}
+
+#valeursList::-webkit-scrollbar {
+    display: none; /* Masque la barre de défilement dans Webkit (Chrome, Safari) */
+}
+
+.valeurItem {
+    background-color: #FFCC66;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px 0; /* Espacement vertical entre les items */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 40px); /* Ajuste la largeur pour éviter la coupure */
+    justify-content: space-between; /* Espace entre le texte et le bouton */
+}
+
+.valeurItem button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 #flècheRoue {
     position: absolute;
-    top: -20px;
-    left: 50%;
+    top: 5px;
+    left: 26%;
     transform: translateX(-50%) rotate(180deg);
     font-size: 30px;
     color: red;
 }
+
+#lancerRoue {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0092ca;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px; /* Espacement en haut */
+}
+
+#resultatRoue {
+    margin-top: 20px; /* Espacement en haut */
+    font-size: 16px;
+    color: #222831;
+}
+
 
 /* ##############   Pile ou face    ##############*/
 #pieceContainer {
@@ -147,6 +336,15 @@ button:active {
     z-index: 1;
 }
 
+.button-1 img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* S'assure que l'image s'adapte bien dans le conteneur */
+    pointer-events: none; /* Désactive les événements de souris sur l'image */
+    position: relative;
+    z-index: 2; /* Assure que l'image est au-dessus des pseudo-éléments */
+}
+
 .button-1::before {
     content: '';
     position: absolute;
@@ -156,35 +354,35 @@ button:active {
     bottom: 0;
     background-color: #FFFFFF; /* Fond blanc pour le bouton */
     border-radius: 10px; /* Coins arrondis */
-    z-index: 1; /* Place le fond blanc devant l'ombre */
+    z-index: 0; /* Place le pseudo-élément derrière le contenu */
 }
 
 .button-1::after {
     content: '';
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background-color: #FFCC66; /* Couleur de la bordure solide */
-    border-radius: 20px; /* Ajustez selon le rayon de bordure désiré */
-    transition: all .2s ease-in-out; /* Ajout de la transition */
-    z-index: 0; /* Place le pseudo-élément derrière le bouton */
-}
-
-.button-1:hover::after {
-    top: -7px;
-    left: -7px;
-    right: -7px;
-    bottom: -7px;
-    background-color: #FFDD77; /* Couleur de la bordure au survol */
-}
-
-.button-1:active::after {
     top: -5px;
     left: -5px;
     right: -5px;
     bottom: -5px;
+    background-color: #FFCC66; /* Couleur de la bordure solide */
+    border-radius: 15px; /* Ajustez selon le rayon de bordure désiré */
+    transition: all .2s ease-in-out; /* Ajout de la transition */
+    z-index: -1; /* Place le pseudo-élément derrière le bouton */
+}
+
+.button-1:hover::after {
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background-color: #FFDD77; /* Couleur de la bordure au survol */
+}
+
+.button-1:active::after {
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
     background-color: #FFAA44; /* Couleur de la bordure lors de l'activation */
 }
 
@@ -195,13 +393,6 @@ button:active {
 
 .button-1:focus {
     outline: 5px solid #FFCC66; /* Couleur de la bordure au focus */
-}
-
-/* Styles pour l'icône */
-.button-1 .icon {
-    font-size: 30px; /* Taille de l'icône réduite */
-    display: block;
-    margin: 0 auto;
 }
 
 .button-3 {
@@ -253,6 +444,35 @@ button:active {
 }
 
 /* Responsive design */
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .right-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .button-game {
+        width: 100%;
+    }
+
+    .button-3 {
+        width: 100px;
+        height: 100px;
+    }
+
+    #logo img {
+        max-width: 80%;
+    }
+    #left-navbar img {
+        max-width: 80%;
+    }
+}
+
 @media (max-width: 600px) {
     button {
         padding: 8px 16px;
@@ -261,8 +481,42 @@ button:active {
 
     .jeu {
         width: 100%;
-        box-sizing: border-box; /* Assurez-vous que le padding ne dépasse pas la largeur définie */
+    }
+
+    .button-3 {
+        width: 80px;
+        height: 80px;
     }
 }
 
+.slide-out {
+    animation: slideOut 1s forwards;
+}
 
+@keyframes slideOut {
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+.grey-rectangle {
+    position: fixed;
+    top: 10%;
+    right: -100%;
+    width: 80%;
+    height: 80%;
+    background-color: #F7F7F7;
+    border-radius: 20px;
+    z-index: 1;
+    animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        right: -100%;
+    }
+    to {
+        right: 10%;
+    }
+}

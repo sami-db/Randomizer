@@ -2,23 +2,54 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Jeux de Randomisation</title>
+    <title>Lucky Flip</title>
     <link rel="stylesheet" href="CSS/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="JS/Libraries/Winwheel.js"></script>
 </head>
 <body>
-<div id="navbar">
-    <div class="button-1"></div>
 
+<div id="navbar">
+    <div class="left-navbar">
+        <img src="https://cdn.discordapp.com/attachments/1054901359247376445/1267095397419978813/luckyfliplogo.png?ex=66a78a0c&is=66a6388c&hm=313d47820ce49c85a1df5322c0d866a0ace74351a0e75cb196bfc6ffa4a62845&" alt="luckyflip" draggable="false">
+    </div>
+    <div class="right-navbar">
+
+    </div>
+    <div class="button-1">
+        <img src="https://cdn.discordapp.com/attachments/1045689838696923219/1266917169753493616/settings.png?ex=66a6e40f&is=66a5928f&hm=fcd70c29504c34da38a04d4a113961b0d6c8d6e834f3b50608efbb763106dbd8&" alt="settings" draggable="false">
+    </div>
+</div>
+
+<div id="logo">
+    <img src="https://cdn.discordapp.com/attachments/1045689838696923219/1266880126923178025/luckyflip.png?ex=66a6c18f&is=66a5700f&hm=09a1d73b7e08a55c3d58c7e3e539904da197fb46858dae33523411b435b4172b&" alt="luckyflip" draggable="false">
+    <div class="star star1"></div>
+    <div class="star star2"></div>
 </div>
 
 <div id="menu">
-
-    <div class="button-3" role="button"></div>
-    <div class="button-3" role="button"></div>
-    <div class="button-3" role="button"></div>
+    <!-- Roue de la fortune -->
+    <div class="button-game">
+        <div class="button-3" role="button" id="btnRoue">
+            <img src="https://cdn.discordapp.com/attachments/1045689838696923219/1266901805346979910/rouedelafortune.png?ex=66a6d5c0&is=66a58440&hm=220f0071df7a6b03499e97dd19445bbecf6737502fede8e1bca6f8106c9ab52c&" alt="Roue de la fortune" draggable="false">
+        </div>
+        <h2>Roue de la fortune</h2>
+    </div>
+    <!-- Dé à six faces -->
+    <div class="button-game">
+        <div class="button-3" role="button" id="btnDe">
+            <img src="https://cdn.discordapp.com/attachments/1045689838696923219/1266906802839093288/de.png?ex=66a6da67&is=66a588e7&hm=a66f580e9705c96fd04f69e9845e380aa4767953628e8c6d67ff2af2209c9bb0&" alt="Dé à six faces" draggable="false">
+        </div>
+        <h2>Dé à six faces</h2>
+    </div>
+    <!-- Pile ou face -->
+    <div class="button-game">
+        <div class="button-3" role="button" id="btnPileFace">
+            <img src="https://cdn.discordapp.com/attachments/1045689838696923219/1266908426022289471/pileouface.png?ex=66a6dbea&is=66a58a6a&hm=3f612d02e4daa4359dfecb03a1e4da2169b3902ec4be534dd5ff37d230a198ef&" alt="Pile ou face" draggable="false">
+        </div>
+        <h2>Pile ou face</h2>
+    </div>
     <!--
     <button id="btnRoue">
         <img src="https://i.ibb.co/FYMsVVk/roue.png" alt="Roue de la Chance">
@@ -34,16 +65,28 @@
     </button>
     -->
 </div>
-<!--
+
 <div id="jeuRoue" class="jeu" style="display:none;">
     <div id="roueContainer">
-        <canvas id='canvasRoue' width='500' height='500'></canvas>
-        <textarea id="valeursRoue" placeholder="Entrez les valeurs séparées par une virgule"></textarea>
-        <div id="flècheRoue">&#9650;</div>
-        <button onclick="lancerRoue()">Lancer la Roue</button>
-        <div id="resultatRoue"></div>
+        <div class="roue">
+            <div id="flècheRoue">&#9650;</div>
+            <canvas id='canvasRoue' width='500' height='500'></canvas>
+            <button id="lancerRoue">Lancer la Roue</button>
+            <div id="resultatRoue"></div>
+        </div>
+        <div id="valeursEtBouton">
+            <div id="valeursListContainer">
+                <div id="valeursList"></div>
+                </div>
+            <div id="inputsRoue">
+                <input type="text" id="valeurRoue" placeholder="Entrez une valeur">
+                <button id="ajouterValeur">Ajouter</button>
+            </div>
+        </div>
     </div>
 </div>
+
+
 
 <div id="jeuPileFace" class="jeu" style="display:none;">
     <div id="pieceContainer">
@@ -59,7 +102,16 @@
     <div id="resultatDe"></div>
     <button onclick="lancerDe()">Lancer le Dé</button>
 </div>
--->
+
+
+<!-- Widget Settings -->
+<div id="settings-widget" class="hidden">
+    <div class="widget-content">
+        <button id="close-widget">Fermer</button>
+        <h2>Paramètres</h2>
+        <p>Contenu des paramètres ici...</p>
+    </div>
+</div>
 
 <script src="JS/menu.js"></script>
 <script src="JS/jeux.js"></script>
